@@ -48,7 +48,17 @@ jobs:
       run: go build -v ./...
 
     - name: Test
-      run: GITHUBLOS=true go test -v -coverprofile=profile.cov ./...
+      run: |
+        if [ "$RUNNER_OS" == "Linux" ]; then
+          GITHUBLOS=true go test -v -coverprofile=profile.cov ./...
+        elif [ "$RUNNER_OS" == "Windows" ]; then
+          go test -v -coverprofile=profile.cov ./...
+        elif [ "$RUNNER_OS" == "MacOS" ]; then
+          go test -v -coverprofile=profile.cov ./...
+        else
+          echo "$RUNNER_OS not supported"
+          exit 1
+        fi
 
     - name: Send coverage
       uses: shogo82148/actions-goveralls@v1
