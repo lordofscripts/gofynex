@@ -1,0 +1,57 @@
+# This workflow will build a golang project V2
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
+# ![Build](https://github.com/lordofscripts/REPOSITORYNAME/actions/workflows/go.yml/badge.svg)
+
+name: Go
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        go-version: ['', 'stable']
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+    - uses: actions/checkout@v5
+      with:
+        persist-credentials: false
+
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: ${{ matrix.go-version }}
+        go-version-file: 'go.mod'
+
+    - name: Install dependencies
+      run: >-
+        sudo apt-get update &&
+        sudo apt-get install
+        bc
+        gcc
+        libgl1-mesa-dev
+        libwayland-dev
+        libx11-dev
+        libxkbcommon-dev
+        xorg-dev
+      if: ${{ runner.os == 'Linux' }}
+
+    - name: Build
+      run: go build -v ./...
+
+    - name: Test
+      run: GITHUBLOS=true go test -v -coverprofile=profile.cov ./...
+
+    - name: Send coverage
+      uses: shogo82148/actions-goveralls@v1
+      with:
+        path-to-profile: profile.cov
+

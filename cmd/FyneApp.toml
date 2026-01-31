@@ -1,0 +1,8 @@
+[Details]
+Name = "PatternLockDemo"
+ID = "com.lordofscripts.patternlock"
+Version = "0.1.0"
+Build = 15
+
+[Migrations]
+fyneDo = true
