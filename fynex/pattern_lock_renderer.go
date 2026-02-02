@@ -104,7 +104,6 @@ func (r *patternRenderer) Objects() []fyne.CanvasObject {
 }
 
 func (r *patternRenderer) Refresh() {
-	println("re-render")
 	// 1. Synchronize the background canvas object with the widget's resource
 	if r.p.backgroundRsrc != nil {
 		if r.background == nil {
@@ -116,7 +115,6 @@ func (r *patternRenderer) Refresh() {
 			r.background.Move(fyne.NewPos(0, 0))
 		} else if r.background.Resource != r.p.backgroundRsrc {
 			// Update the resource if it changed and trigger an image refresh
-			println("background changed")
 			r.background.Resource = r.p.backgroundRsrc
 			r.background.Refresh()
 		}
