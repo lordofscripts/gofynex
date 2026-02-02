@@ -11,6 +11,8 @@ gets immediate feedback to learn when to stop. Fyne doesn't offer that.
 So, rather than having to reimplement the same again and again I decided
 to include here my custom slider.
 
+![](./assets/sample_slider.png)
+
 Features:
 
 * Uses the standard Fyne `widget.Slider` but customized.
