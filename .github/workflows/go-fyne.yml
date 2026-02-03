@@ -1,5 +1,5 @@
-# This workflow will build a golang project V2
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
+# This workflow will build a golang project V3
+# Builds a Fyne app on macOS, Linux & Windows forcing Bash shell on all of them.
 # ![Build](https://github.com/lordofscripts/REPOSITORYNAME/actions/workflows/go.yml/badge.svg)
 
 name: Go
@@ -48,11 +48,12 @@ jobs:
       run: go build -v ./...
 
     - name: Test
+      shell: bash
       run: |
         if [ "$RUNNER_OS" == "Linux" ]; then
           GITHUBLOS=true go test -v -coverprofile=profile.cov ./...
         elif [ "$RUNNER_OS" == "Windows" ]; then
-          set GITHUBLOS=true && go test -v -coverprofile=profile.cov ./...
+          export GITHUBLOS=true && go test -v -coverprofile=profile.cov ./...
         elif [ "$RUNNER_OS" == "macOS" ]; then
           GITHUBLOS=true go test -v -coverprofile=profile.cov ./...
         else
