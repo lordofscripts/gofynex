@@ -14,4 +14,9 @@ Features:
 The introduced `TriState` enumeration type might be useful for other
 purposes as well. 
 
+### Sponsor Me
+
+If you like my work -which takes useful free time that you don't have to spend- please
+consider [Sponsoring ️❤️ me](https://github.com/sponsors/lordofscripts). Or...
+
 [ ![Buy me a coffee](./assets/buymecoffee.jpg)](https://BuyMeACoffee.com/lostinwriting)

@@ -32,4 +32,9 @@ from it by reusing it. No need to reinvent the wheel.
 * [Scrollable slider](./WIDGET_SLIDER.md) widget. An enhanced `widget.Slider`
 * A custom [Tri-color LED](./WIDGET_LED.md) to display tri-state values
 
+### Sponsor Me
+
+If you like my work -which takes useful free time that you don't have to spend- please
+consider [Sponsoring ️❤️ me](https://github.com/sponsors/lordofscripts). Or...
+
 [ ![Buy me a coffee](./assets/buymecoffee.jpg)](https://BuyMeACoffee.com/lostinwriting)

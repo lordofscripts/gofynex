@@ -153,4 +153,10 @@ See it in action with a demonstration app:
 
 ![](./assets/patternlock_video.mp4)
 
+
+### Sponsor Me
+
+If you like my work -which takes useful free time that you don't have to spend- please
+consider [Sponsoring ️❤️ me](https://github.com/sponsors/lordofscripts). Or...
+
 [ ![Buy me a coffee](./assets/buymecoffee.jpg)](https://BuyMeACoffee.com/lostinwriting)
