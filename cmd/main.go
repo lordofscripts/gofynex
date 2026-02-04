@@ -20,7 +20,9 @@ import (
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
+	"github.com/lordofscripts/gofynex"
 	"github.com/lordofscripts/gofynex/fynex"
+	"github.com/lordofscripts/gofynex/fynex/dlg"
 )
 
 /* ----------------------------------------------------------------
@@ -28,8 +30,10 @@ import (
  *-----------------------------------------------------------------*/
 
 const (
-	APP_NAME = "Pattern Lock Demo"
-	APP_ID   = "com.lordofscripts.patternlock"
+	APP_NAME      = "Pattern Lock Demo"
+	APP_ID        = "com.lordofscripts.patternlock"
+	APP_DEVELOPER = "Lord of Scripts™"
+	APP_TITLE     = "Software Architect/Writer"
 )
 
 var (
@@ -454,6 +458,7 @@ func (a *patternApp) callbackOnDefined(sequence []int) {
 
 func Help() {
 	flag.PrintDefaults()
+	gofynex.Copyright(gofynex.CO1, true)
 	os.Exit(0)
 }
 
@@ -474,22 +479,30 @@ func ParseFlags() {
 
 }
 
-func AboutDemo(win fyne.Window, meta fyne.AppMetadata) {
-	About := `
-Copyright (c)2026 Lord of Scripts
-This is a custom for Pattern Lock.
-And there are more useful widgets for
-you to enjoy in the limited Fyne world.
-	`
+func FixMetadata(meta fyne.AppMetadata) fyne.AppMetadata {
 	if len(meta.Name) == 0 {
 		meta.Name = APP_NAME
 	}
 	if len(meta.ID) == 0 {
 		meta.ID = APP_ID
 	}
+	meta.Version = gofynex.Version.Short()
 	meta.Custom["url"] = "https://github.com/lordofscripts"
+	meta.Custom["url.text"] = "GitHub"
+	return meta
+}
 
-	about := fynex.NewAboutBox(win, nil, meta, About)
+func AboutDemo(win fyne.Window, meta fyne.AppMetadata) {
+	const About = `
+Copyright (c)2026 Lord of Scripts
+This is a custom for Pattern Lock.
+And there are more useful widgets for
+you to enjoy in the limited Fyne world.
+	`
+
+	about := dlg.NewAboutBox(win, nil, meta).
+		WithPersonModel(fynex.NewPersonWithImage(APP_DEVELOPER, APP_TITLE, fynex.DeveloperIcon)).
+		WithText(About, false, true)
 	about.ShowDialog()
 }
 
@@ -505,6 +518,8 @@ func Die(exitCode int, message string) {
 
 // Demonstration of custom PatternLock widget
 func main() {
+	gofynex.Copyright(gofynex.CO1, true)
+
 	ParseFlags()
 
 	app := newPatternApp(PATTERN_3x3)
@@ -525,7 +540,8 @@ func main() {
 		logWindow.Show()
 	}
 
-	AboutDemo(app.GetWindow(), app.GetApp().Metadata())
-
+	AboutDemo(app.GetWindow(), FixMetadata(app.GetApp().Metadata()))
 	app.Run()
+
+	gofynex.BuyMeCoffee()
 }

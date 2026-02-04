@@ -22,3 +22,10 @@ var GradientBackground = &fyne.StaticResource{
 	StaticName:    "assets/widget_background_gradient1.png",
 	StaticContent: gradientBackgroundData,
 }
+
+//go:embed assets/lotr_icon.png
+var developerIconData []byte
+var DeveloperIcon = &fyne.StaticResource{
+	StaticName:    "assets/lotr_icon.png",
+	StaticContent: developerIconData,
+}

@@ -8,6 +8,7 @@ menu item in your applications.
 Features:
 
 * Logo support (300x300)
+* Developer info support (see [PersonWidget](./WIDGET_PERSON.md))
 * Uses Metadata
 * Optional URL
 
@@ -27,9 +28,11 @@ Use the dialog:
 > var logoResource fyne.Resource // usually an embedded resource
 > var metadata fyne.AppMetadata = myApp.Metadata()
 > var text string
-> text = "This is an application I created for the fun of it."
+> text = "This is a **nice** application I created for the fun of it."
 > metadata["url"] = "https://github.com/lordofscripts"
-> about := NewAboutBox(myWin, logoResource, metadata, text)
+> about := NewAboutBox(myWin, logoResource, metadata).
+>               WithText(text, true, false).
+>               WithPerson("Juan de Los Palotes", "Soñador", embeddedDeveloperPic)
 > about.ShowDialog()
 
 Note, for applications built using `go` instead of `fyne package`
