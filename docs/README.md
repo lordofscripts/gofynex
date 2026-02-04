@@ -31,6 +31,8 @@ from it by reusing it. No need to reinvent the wheel.
 * [Pattern Lock](./WIDGET_PATTERN_LOCK.md) widget
 * [Scrollable slider](./WIDGET_SLIDER.md) widget. An enhanced `widget.Slider`
 * A custom [Tri-color LED](./WIDGET_LED.md) to display tri-state values
+* A flexible [Flexible Mini Theme](./MINI_THEME.md)
+* A [Person widget](./WIDGET_PERSON.md)
 
 ### Sponsor Me
 
