@@ -1,7 +1,8 @@
 [Details]
 Name = "PatternLockDemo"
 ID = "com.lordofscripts.patternlock"
-Version = "0.1.0"
+Icon = "AppIcon.png"
+Version = "1.2.0"
 Build = 15
 
 [Migrations]
