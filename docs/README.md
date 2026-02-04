@@ -2,7 +2,7 @@
 
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/lordofscripts/gofynex)
 [![Go Report Card](https://goreportcard.com/badge/github.com/lordofscripts/gofynex?style=flat-square)](https://goreportcard.com/report/github.com/lordofscripts/gofynex)
-![Build](https://github.com/lordofscripts/gofynex/actions/workflows/go.yml/badge.svg)
+![Build](https://github.com/lordofscripts/gofynex/actions/workflows/go-fyne.yml/badge.svg)
 [![Go Reference](https://pkg.go.dev/badge/github.com/lordofscripts/gofynex.svg)](https://pkg.go.dev/github.com/lordofscripts/gofynex)
 [![GitHub release (with filter)](https://img.shields.io/github/v/release/lordofscripts/gofynex)](https://github.com/lordofscripts/gofynex/releases/latest)[![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](https://choosealicense.com/licenses/mit/)
 
