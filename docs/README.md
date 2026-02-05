@@ -1,4 +1,4 @@
-# Pattern Lock Widget
+# Go Fyne Custom Widgets
 
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/lordofscripts/gofynex)
 [![Go Report Card](https://goreportcard.com/badge/github.com/lordofscripts/gofynex?style=flat-square)](https://goreportcard.com/report/github.com/lordofscripts/gofynex)
