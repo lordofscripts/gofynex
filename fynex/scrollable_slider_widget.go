@@ -1,7 +1,7 @@
 /* -----------------------------------------------------------------
  *              L o r d  O f   S c r i p t s (tm)
  *             Copyright (C)2026 Dídimo Grimaldo T.
- *                           APP_NAME
+ *              github.com/lordofscripts/gofynex
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  * A custom Slider widget that subsanates Fynes shortcomings such as
  * not having tooltips. Almost always the GUI designer needs to display
@@ -37,6 +37,9 @@ const (
  *-----------------------------------------------------------------*/
 
 var _ fyne.Scrollable = (*ScrollableSlider)(nil)
+var _ fyne.Disableable = (*ScrollableSlider)(nil)
+var _ fyne.Draggable = (*ScrollableSlider)(nil)
+var _ fyne.Focusable = (*ScrollableSlider)(nil)
 
 /* ----------------------------------------------------------------
  *                         T Y P E S
@@ -163,6 +166,63 @@ func (s *ScrollableSlider) SetRightText(str string) {
 func (s *ScrollableSlider) CreateRenderer() fyne.WidgetRenderer {
 	return widget.NewSimpleRenderer(s.container)
 }
+
+// implements fyne.Disableable
+func (s *ScrollableSlider) Enable() {
+	s.slider.Enable()
+}
+
+// implements fyne.Disableable
+func (s *ScrollableSlider) Disable() {
+	s.slider.Disable()
+}
+
+// implements fyne.Disableable
+func (s *ScrollableSlider) Disabled() bool {
+	return s.slider.Disabled()
+}
+
+// implements fyne.Draggable
+func (s *ScrollableSlider) Dragged(e *fyne.DragEvent) {
+	s.slider.Dragged(e)
+}
+
+// implements fyne.Draggable
+func (s *ScrollableSlider) DragEnd() {
+	s.slider.DragEnd()
+}
+
+// implements fyne.Focusable
+func (s *ScrollableSlider) FocusGained() {
+	s.slider.FocusGained()
+}
+
+// implements fyne.Focusable
+func (s *ScrollableSlider) FocusLost() {
+	s.slider.FocusLost()
+}
+
+// implements fyne.Focusable
+func (s *ScrollableSlider) TypedKey(ke *fyne.KeyEvent) {
+	s.slider.TypedKey(ke)
+}
+
+// implements fyne.Focusable
+func (s *ScrollableSlider) TypedRune(r rune) {
+	s.slider.TypedRune(r)
+}
+
+// gets the current value selected in the slider
+func (s *ScrollableSlider) GetValue() float64 {
+	return s.slider.Value
+}
+
+/* @note Generics on methods will be available in GO v1.27
+// gets the current value selected in the slider
+func (s *ScrollableSlider) GetValueOn[T Number](valuePtr *T) {
+	*valuePtr = s.slider.Value
+}
+*/
 
 /* ----------------------------------------------------------------
  *                 P R I V A T E    M E T H O D S
