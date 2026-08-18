@@ -1,9 +1,9 @@
 /* -----------------------------------------------------------------
  *              L o r d  O f   S c r i p t s (tm)
  *             Copyright (C)2026 Dídimo Grimaldo T.
- *                           APP_NAME
+ *              github.com/lordofscripts/gofynex
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- *
+ * Demo application for GoFynex module (Fyne v2 extensions)
  *-----------------------------------------------------------------*/
 package main
 
@@ -20,6 +20,7 @@ import (
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
+	"github.com/lordofscripts/goapp"
 	"github.com/lordofscripts/gofynex"
 	"github.com/lordofscripts/gofynex/fynex"
 	"github.com/lordofscripts/gofynex/fynex/dlg"
@@ -34,6 +35,8 @@ const (
 	APP_ID        = "com.lordofscripts.patternlock"
 	APP_DEVELOPER = "Lord of Scripts™"
 	APP_TITLE     = "Software Architect/Writer"
+
+	CHR_TRIDENT rune = rune(0x1f531) // 🔱
 )
 
 var (
@@ -458,7 +461,12 @@ func (a *patternApp) callbackOnDefined(sequence []int) {
 
 func Help() {
 	flag.PrintDefaults()
-	gofynex.Copyright(gofynex.CO1, true)
+	gofynex.ModuleVersion.Copyright(APP_DEVELOPER, CHR_TRIDENT)
+
+	fmt.Println("Guest Imports:")
+	for _, using := range goapp.CustomImports {
+		fmt.Println("\t" + using)
+	}
 	os.Exit(0)
 }
 
@@ -486,7 +494,7 @@ func FixMetadata(meta fyne.AppMetadata) fyne.AppMetadata {
 	if len(meta.ID) == 0 {
 		meta.ID = APP_ID
 	}
-	meta.Version = gofynex.Version.Short()
+	meta.Version = gofynex.ModuleVersion.Short()
 	meta.Custom["url"] = "https://github.com/lordofscripts"
 	meta.Custom["url.text"] = "GitHub"
 	return meta
@@ -518,7 +526,7 @@ func Die(exitCode int, message string) {
 
 // Demonstration of custom PatternLock widget
 func main() {
-	gofynex.Copyright(gofynex.CO1, true)
+	gofynex.ModuleVersion.Copyright(APP_DEVELOPER, CHR_TRIDENT)
 
 	ParseFlags()
 
@@ -543,5 +551,5 @@ func main() {
 	AboutDemo(app.GetWindow(), FixMetadata(app.GetApp().Metadata()))
 	app.Run()
 
-	gofynex.BuyMeCoffee()
+	gofynex.ModuleVersion.BuyMeCoffee("lostinwriting")
 }
