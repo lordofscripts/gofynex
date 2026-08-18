@@ -16,6 +16,26 @@ import "fyne.io/fyne/v2"
  *-----------------------------------------------------------------*/
 
 /* ----------------------------------------------------------------
+ *                     I N T E R F A C E S
+ *-----------------------------------------------------------------*/
+
+var _ IMenuGroup = (*menuGroup)(nil)
+
+// Methods to control a Menu Group helper. A menu group is a top-level
+// menu and a (sub)set of enrolled MenuItems (not necessarily all children)
+// that will be controlled dynamically.
+type IMenuGroup interface {
+	Enroll(tag MenuItemID, mitem *fyne.MenuItem) *menuGroup
+	EnableAll()
+	DisableAll()
+	Check(tag MenuItemID)
+	Enable(tag MenuItemID) *menuGroup
+	Disable(tag MenuItemID) *menuGroup
+	DisableItem(tag MenuItemID, disable bool) *menuGroup
+	ClearAll()
+}
+
+/* ----------------------------------------------------------------
  *                   P U B L I C    T Y P E S
  *-----------------------------------------------------------------*/
 
@@ -41,6 +61,7 @@ type menuGroup struct {
 // same fyne.Menu top-level menu as a child and that is of interest to
 // us for dynamic control at runtime. If you don't need to change their
 // Enabled/Disabled state, then do NOT enroll the item.
+// NOTE: the returned value implements the `fynex.IMenuGroup` interface.
 func NewMenuGroup(parent *fyne.Menu) *menuGroup {
 	return &menuGroup{
 		Items:  make(map[MenuItemID]*fyne.MenuItem),
