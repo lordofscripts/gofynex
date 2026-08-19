@@ -38,8 +38,6 @@ const (
 
 var _ fyne.Scrollable = (*ScrollableSlider)(nil)
 var _ fyne.Disableable = (*ScrollableSlider)(nil)
-var _ fyne.Draggable = (*ScrollableSlider)(nil)
-var _ fyne.Focusable = (*ScrollableSlider)(nil)
 
 /* ----------------------------------------------------------------
  *                         T Y P E S
@@ -180,36 +178,6 @@ func (s *ScrollableSlider) Disable() {
 // implements fyne.Disableable
 func (s *ScrollableSlider) Disabled() bool {
 	return s.slider.Disabled()
-}
-
-// implements fyne.Draggable
-func (s *ScrollableSlider) Dragged(e *fyne.DragEvent) {
-	s.slider.Dragged(e)
-}
-
-// implements fyne.Draggable
-func (s *ScrollableSlider) DragEnd() {
-	s.slider.DragEnd()
-}
-
-// implements fyne.Focusable
-func (s *ScrollableSlider) FocusGained() {
-	s.slider.FocusGained()
-}
-
-// implements fyne.Focusable
-func (s *ScrollableSlider) FocusLost() {
-	s.slider.FocusLost()
-}
-
-// implements fyne.Focusable
-func (s *ScrollableSlider) TypedKey(ke *fyne.KeyEvent) {
-	s.slider.TypedKey(ke)
-}
-
-// implements fyne.Focusable
-func (s *ScrollableSlider) TypedRune(r rune) {
-	s.slider.TypedRune(r)
 }
 
 // gets the current value selected in the slider

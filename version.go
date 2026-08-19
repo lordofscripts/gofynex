@@ -21,7 +21,7 @@ const (
 	// Change these values accordingly
 	NAME           string = "GoFynex"
 	DESC           string = "Fyne is crippled, here are the crutches."
-	MANUAL_VERSION string = "1.3.1"
+	MANUAL_VERSION string = "1.3.2"
 	//_RELEASE_CANDIDATE int    = 0
 	//_BETA_VERSION int = 0
 )

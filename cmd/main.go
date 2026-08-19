@@ -258,6 +258,14 @@ func (a *patternApp) Define() *patternApp {
 	// A sample status LED that displays access status
 	a.ui.statusLED = fynex.NewLedLabel("Status")
 
+	// we will use a Form to demonstrate Scrollable/Draggable also works
+	// in a container because explicitely implementing Draggable on
+	// Scrollable had introduced a bug. This demonstrates it is fixed.
+	form := widget.NewForm(
+		widget.NewFormItem("Slider", slider),
+		widget.NewFormItem("LED", a.ui.statusLED),
+	)
+
 	// define the window
 	a.ui.mainContainer = container.NewVBox(
 		a.ui.lockContainer,
@@ -265,8 +273,9 @@ func (a *patternApp) Define() *patternApp {
 		container.NewCenter(bgRadioButtons),
 		hintLabel,
 		a.ui.patternLabel,
-		slider,
-		a.ui.statusLED,
+		//slider,
+		//a.ui.statusLED,
+		form,
 	)
 	a.win.SetContent(a.ui.mainContainer)
 
