@@ -1,6 +1,9 @@
 
 # Set Compiler to either of: go, gocolor OR gopretty
 MODE=gopretty
+# Include the GOFLAGS from .env into go build in a seamless way
+include .env
+export
 
 # Compilers
 GO=go
@@ -10,7 +13,7 @@ GOPRETTY="$(HOME)/go/bin/gocolor"
 ifeq ($(MODE),gocolor)
         GO=$(GOCOLOR)
 endif
-GO_TAGS=
+GO_TAGS=-tags x11
 
 # - Packagers only
 PKG_SEMANTIC_VERSION=$(shell sed -n '/>>>BEGIN/,/>>>END/p' version.go > /tmp/mainversion_gfx.go && go run /tmp/mainversion_gfx.go short)
